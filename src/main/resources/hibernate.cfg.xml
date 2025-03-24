@@ -5,6 +5,7 @@
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/demoDB</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">0000</property>
+<!--        giving the  command to hibernate to create the table -->
 
     </session-factory>
 </hibernate-configuration>

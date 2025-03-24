@@ -17,12 +17,11 @@ public class Main {
                 .addAnnotatedClass(org.example.Student.class)
                 .buildSessionFactory();
         Session sc = sf.openSession();
-        Transaction transaction = sc.beginTransaction();
-        //better practice
-        sc.persist(s1);
-        transaction.commit();
+
+        //fetching a record from database;
+        Student s2 = sc.get(Student.class, 103);
         sf.close();
-        System.out.println(s1);
+        System.out.println(s2);
 
     }
 }

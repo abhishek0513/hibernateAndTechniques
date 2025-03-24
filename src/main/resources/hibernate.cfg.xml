@@ -8,6 +8,5 @@
 <!--        giving the  command to hibernate to create the table -->
 <!--        <property name="hibernate.hbm2ddl.auto">create/drop</property>-->
         <property name="hibernate.hbm2ddl.auto">update</property>
-
     </session-factory>
 </hibernate-configuration>

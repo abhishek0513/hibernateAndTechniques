@@ -8,18 +8,20 @@ import org.hibernate.cfg.Configuration;
 public class Main {
     public static void main(String[] args) {
         Student s1 = new Student();
-        s1.setsName("John");
-        s1.setRollNo(100);
-        s1.setMark(90);
-
-        Configuration cfg = new Configuration();
-        cfg.addAnnotatedClass(org.example.Student.class);
-        cfg.configure();
-        SessionFactory sf = cfg.buildSessionFactory();
+        s1.setsName("Josh");
+        s1.setRollNo(104);
+        s1.setMark(87);
+//        SessionFactory sf = cfg.buildSessionFactory();
+        //Better practice
+        SessionFactory sf = new Configuration().configure("hibernate.cfg.xml")
+                .addAnnotatedClass(org.example.Student.class)
+                .buildSessionFactory();
         Session sc = sf.openSession();
         Transaction transaction = sc.beginTransaction();
-        sc.save(s1);
+        //better practice
+        sc.persist(s1);
         transaction.commit();
+        sf.close();
         System.out.println(s1);
 
     }

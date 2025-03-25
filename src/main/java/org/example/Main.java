@@ -8,9 +8,9 @@ import org.hibernate.cfg.Configuration;
 public class Main {
     public static void main(String[] args) {
         Student s1 = new Student();
-        s1.setsName("Josh");
-        s1.setRollNo(104);
-        s1.setMark(87);
+        s1.setsName("Phill");
+        s1.setRollNo(102);
+        s1.setMark(60);
 //        SessionFactory sf = cfg.buildSessionFactory();
         //Better practice
         SessionFactory sf = new Configuration().configure("hibernate.cfg.xml")
@@ -18,10 +18,12 @@ public class Main {
                 .buildSessionFactory();
         Session sc = sf.openSession();
 
-        //fetching a record from database;
-        Student s2 = sc.get(Student.class, 103);
+        //Updade the a record from database;
+        Transaction tc = sc.beginTransaction();
+        sc.remove(s1);
+        tc.commit();
+        sc.close();
         sf.close();
-        System.out.println(s2);
-
+        System.out.println(s1);
     }
 }

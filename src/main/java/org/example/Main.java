@@ -7,23 +7,27 @@ import org.hibernate.cfg.Configuration;
 
 public class Main {
     public static void main(String[] args) {
-        Student s1 = new Student();
-        s1.setsName("Phill");
-        s1.setRollNo(102);
-        s1.setMark(60);
-//        SessionFactory sf = cfg.buildSessionFactory();
+
+        Laptop l1 = new Laptop();
+        l1.setBrand("Mac");
+        l1.setRam(16);
+        l1.setModel("Air");
+        Person person = new Person();
+        person.setId(1);
+        person.setTech("Java");
+        person.setName("John");
+        person.setLaptop(l1);
         //Better practice
         SessionFactory sf = new Configuration().configure("hibernate.cfg.xml")
-                .addAnnotatedClass(org.example.Student.class)
+                .addAnnotatedClass(org.example.Person.class)
                 .buildSessionFactory();
         Session sc = sf.openSession();
 
         //Updade the a record from database;
         Transaction tc = sc.beginTransaction();
-        sc.remove(s1);
+        sc.persist(person);
         tc.commit();
-        sc.close();
         sf.close();
-        System.out.println(s1);
+        System.out.println(person);
     }
 }

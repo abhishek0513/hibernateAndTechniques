@@ -1,7 +1,8 @@
 package org.example;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Person {
@@ -9,7 +10,9 @@ public class Person {
     private int id;
     private String name;
     private String tech;
-    private Laptop laptop;
+//    @OneToMany
+    @ManyToMany
+    private List<Laptop> laptop;
 
     @Override
     public String toString() {
@@ -45,11 +48,11 @@ public class Person {
         this.tech = tech;
     }
 
-    public Laptop getLaptop() {
+    public List<Laptop> getLaptop() {
         return laptop;
     }
 
-    public void setLaptop(Laptop laptop) {
+    public void setLaptop(List<Laptop> laptop) {
         this.laptop = laptop;
     }
 }

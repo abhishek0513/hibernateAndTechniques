@@ -14,8 +14,7 @@ public class Laptop {
     private String brand;
     private String model;
     private int ram;
-    @ManyToMany(mappedBy = "laptop")
-    private List<Person> person;
+
 
     @Override
     public String toString() {
@@ -24,17 +23,7 @@ public class Laptop {
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", ram=" + ram +
-                ", person=" + person +
                 '}';
-    }
-
-
-    public List<Person> getPerson() {
-        return person;
-    }
-
-    public void setPerson(List<Person> person) {
-        this.person = person;
     }
 
     public int getLid() {
